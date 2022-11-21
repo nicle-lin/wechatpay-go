@@ -1195,9 +1195,9 @@ func (o RefundApplyRequest) Clone() *RefundApplyRequest {
 
 type RefundApplyAmount struct {
 	// 退款金额, 币种的最小单位，只能为整数，不能超过原订单支付金额。
-	Refund *int `json:"refund"`
+	Refund *int64 `json:"refund"`
 	// 原支付交易的订单总金额，币种的最小单位，只能为整数。
-	Total *int `json:"total"`
+	Total *int64 `json:"total"`
 	// 符合ISO 4217标准的三位字母代码，目前只支持人民币：CNY。
 	Currency *string `json:"currency"`
 }
@@ -1243,12 +1243,12 @@ func (o RefundApplyAmount) String() string {
 func (o RefundApplyAmount) Clone() *RefundApplyAmount {
 	ret := RefundApplyAmount{}
 	if o.Refund != nil {
-		ret.Refund = new(int)
+		ret.Refund = new(int64)
 		*ret.Refund = *o.Refund
 	}
 
 	if o.Total != nil {
-		ret.Total = new(int)
+		ret.Total = new(int64)
 		*ret.Total = *o.Total
 	}
 
@@ -1374,11 +1374,11 @@ func (o Refund) Clone() *Refund {
 
 type RefundAmount struct {
 	// 退款金额, 币种的最小单位，只能为整数，不能超过原订单支付金额。
-	Refund *int `json:"refund"`
+	Refund *int64 `json:"refund"`
 	// 退款给用户的金额，不包含所有优惠券金额。
-	PayerRefund *int `json:"payer_refund"`
+	PayerRefund *int64 `json:"payer_refund"`
 	// 优惠券的退款金额，原支付单的优惠按比例退款。
-	DiscountRefund *int `json:"discount_refund"`
+	DiscountRefund *int64 `json:"discount_refund"`
 	// 符合ISO 4217标准的三位字母代码，目前只支持人民币：CNY。
 	Currency *string `json:"currency"`
 }
@@ -1433,17 +1433,17 @@ func (o RefundAmount) String() string {
 func (o RefundAmount) Clone() *RefundAmount {
 	ret := RefundAmount{}
 	if o.Refund != nil {
-		ret.Refund = new(int)
+		ret.Refund = new(int64)
 		*ret.Refund = *o.Refund
 	}
 
 	if o.PayerRefund != nil {
-		ret.PayerRefund = new(int)
+		ret.PayerRefund = new(int64)
 		*ret.PayerRefund = *o.PayerRefund
 	}
 
 	if o.DiscountRefund != nil {
-		ret.DiscountRefund = new(int)
+		ret.DiscountRefund = new(int64)
 		*ret.DiscountRefund = *o.DiscountRefund
 	}
 
@@ -1463,9 +1463,9 @@ type RefundPromotionDetail struct {
 	// 优惠类型
 	Type *string `json:"type"`
 	// 优惠券面额
-	Amount *int `json:"amount"`
+	Amount *int64 `json:"amount"`
 	// 优惠退款金额
-	RefundAmount *int `json:"refund_amount"`
+	RefundAmount *int64 `json:"refund_amount"`
 }
 
 func (o RefundPromotionDetail) MarshalJSON() ([]byte, error) {
@@ -1542,12 +1542,12 @@ func (o RefundPromotionDetail) Clone() *RefundPromotionDetail {
 	}
 
 	if o.Amount != nil {
-		ret.Amount = new(int)
+		ret.Amount = new(int64)
 		*ret.Amount = *o.Amount
 	}
 
 	if o.RefundAmount != nil {
-		ret.RefundAmount = new(int)
+		ret.RefundAmount = new(int64)
 		*ret.RefundAmount = *o.RefundAmount
 	}
 
@@ -1683,13 +1683,13 @@ type RefundNotify struct {
 	// 金额信息
 	Amount struct {
 		// 订单总金额，单位为分，只能为整数，详见支付金额
-		Total *int `json:"total"`
+		Total *int64 `json:"total"`
 		// 退款金额，币种的最小单位，只能为整数，不能超过原订单支付金额，如果有使用券，后台会按比例退。
-		Refund *int `json:"refund"`
+		Refund *int64 `json:"refund"`
 		// 用户实际支付金额，单位为分，只能为整数，详见支付金额
-		PayerTotal *int `json:"payer_total"`
+		PayerTotal *int64 `json:"payer_total"`
 		// 退款给用户的金额，不包含所有优惠券金额
-		PayerRefund *int `json:"payer_refund"`
+		PayerRefund *int64 `json:"payer_refund"`
 	} `json:"amount"`
 	// 退款出资商户
 	RefundAccount *string `json:"refund_account"`
