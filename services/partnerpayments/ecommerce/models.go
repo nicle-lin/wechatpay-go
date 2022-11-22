@@ -1669,6 +1669,8 @@ type RefundNotify struct {
 	// 二级商户号
 	SubMchid *string `json:"sub_mchid"`
 	// 商户订单号
+	OutTradeNo *string `json:"out_trade_no"`
+	// 商户订单号
 	TransactionId *string `json:"transaction_id"`
 	// 商户退款单号
 	OutRefundNo *string `json:"out_refund_no"`
